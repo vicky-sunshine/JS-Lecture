@@ -1,4 +1,4 @@
-# Lecture1
+# Lecture1 JavaScript Basic
 ## Outline
 - Overview
 - JavaScript
@@ -10,9 +10,8 @@
 - 前端:安裝水龍頭與水管
 - 後端:提供水管水
 
-## JavaScript Basic
-### variable
-#### undefined
+## variable
+### undefined
 ```js
 console.log(hello);
 // 不會跳出 alert
@@ -31,10 +30,10 @@ console.log(hello);
 // 不會有error，畫面會成功跳出 alert, 訊息是 5
 ```
 
-#### 變數有效範圍
+### 變數有效範圍
 變數都有自己有效範圍，變數如果沒有用 `var` 宣告的話，會自動變成全域變數，所以要很注意在function裡面的變數會不會把外面的變數弄髒掉。
 
-#### Types
+### Types
 - Primitive types
   - number
   - string
@@ -44,7 +43,7 @@ console.log(hello);
 - Object types
   - 所有非 Primitive types 都屬於物件
 
-#### Primitive types V.S Object types
+### Primitive types V.S Object types
 - Primitive types
   - 以值作為比較
     ```js
@@ -74,7 +73,7 @@ console.log(hello);
 
     ```
 
-#### NaN (Number type)
+### NaN (Number type)
 是數字，但是有物件的特性，用 isNaN() 來判斷說是不是 NaN
 ```js
 var n = 0/0; // NaN
@@ -83,23 +82,23 @@ typeof n;    // "number"
 isNaN(n);    // true
 ```
 
-#### String
+### String
 可以用單雙引號包起來，也可以用 `+`連接
 
-##### escape
+#### escape
 需要顯示單雙引號時，可以用跳脫字元
 ```js
 var str = "What's This."; // OK
 str = 'What's This.';     // error
 str = 'What\'s This.';    // OK
 ```
-##### prompt
+#### prompt
 ```js
 var number = prompt('輸入0~9', '');
 ```
 prompt 回傳的都是字串
 
-##### 自動轉型
+#### 自動轉型
 ```js
 var age = 30;
 
@@ -109,7 +108,7 @@ age = age * 2;  // 602, 被自動轉換成 number
 ```
 字串的 `+` 比數字 `+` 優先順序高，所以只要是數字和字串相加，數字都會被轉換成字串，而不是字串轉成數字。
 
-##### null v.s. undefined
+#### null v.s. undefined
 - undefined 是此變數還沒有給值
 - null 此變數確定沒有值，是我們主動 assign 給變數告知其就是沒有值
 ```js
@@ -117,8 +116,8 @@ Number(null) // 0
 Number(undefined) // NaN
 ```
 
-#### Array
-##### basic operation
+### Array
+#### basic operation
 ```js
 var color = ["red", "yellow", "blue"];
 
@@ -127,20 +126,20 @@ color.push("orange"); // ["red", "yellow", "blue", "orange"];
 color.shift(); // ["yellow", "blue", "orange"];
 color.pop();   // ["yellow", "blue"];
 ```
-##### traverse
+#### traverse
 ```js
 colors.forEach(function(element, index, array){
   console.log("  " + index + "      " + element);
 });
 ```
-##### indexOf
+#### indexOf
 ```js
 var colors = [ "red", "yellow", "blue"];            
 console.log( colors.indexOf("red") );     // 0
 console.log( colors.indexOf("black") );   // -1
 ```
 
-#### Object
+### Object
 ```js
 var people = {
   name: "Kuro",
@@ -176,23 +175,24 @@ Obj === Obj2; //true
 // 瀏覽器會判斷沒有被任何 name 指導，瀏覽器會自己把它清掉。
 ```
 
-### Decision Structures and Operator
-#### `==` v.s `===`
+## Decision Structures and Operator
+### `==` v.s `===`
 - `==`: 數值相等
 - `===`: 數值跟型別都相等
 - `!=`: 數值不相等
 - `!==`: 數值不相等或型別不相等
+
 因為 javascript 會自動轉換型別，所以比較上建議都用 `===`
 
-#### Ternary `?`
+### Ternary `?`
 ```js
 if ( 5 > 3)? "bigger" : "smaller"
 ```
-#### Logical operator
+### Logical operator
 - `&&` and
 - `||` or
 - `!` not
-#### If-else
+### If-else
 ```js
 if (condition A) {
   //condition    A ...
@@ -204,7 +204,47 @@ if (condition A) {
   //condition          
 }
 ```
-## DOM APIs
+### Switch Case
+```js
+switch ( season ) {
+  case 1:
+    alert("春");
+  break;
 
-## jQuery
-## ECMAScript 6
+  case 2:
+    alert("夏");
+  break;
+
+  case 3:
+    alert("秋");
+    break;
+  case 4:
+    alert("冬");
+  break;
+
+  default:
+    alert("數值有錯");
+  break;
+```
+
+## Math
+```js
+Math.ceil() // 無條件進位
+Math.floor() // 無條件捨去
+Math.round() // 四捨五入
+```
+## Loop
+for
+```js
+for (i=0; i<10; i++) {
+  console.log(i);
+}
+```
+while
+```js
+var i=0;
+while (i<10) {
+  console.log(i);
+  i++;
+}
+```
