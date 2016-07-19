@@ -127,10 +127,17 @@ color.shift(); // ["yellow", "blue", "orange"];
 color.pop();   // ["yellow", "blue"];
 ```
 #### traverse
+Method1
 ```js
 colors.forEach(function(element, index, array){
   console.log("  " + index + "      " + element);
 });
+```
+Method2
+```js
+for (var color in colors) {
+  console.log(color);
+}
 ```
 #### indexOf
 ```js
@@ -248,3 +255,4 @@ while (i<10) {
   i++;
 }
 ```
+`break;`可以提早跳出迴圈，`continue;`可以直接跳過之後的步驟，直接到下一個回合。
