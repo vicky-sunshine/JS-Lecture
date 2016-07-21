@@ -1,9 +1,10 @@
 # Lecture1 JavaScript Basic
 ## Outline
 - Overview
-- JavaScript
+- JavaScript Basic
   - Variable
   - Decision Structures and Operator
+  - Function
 
 ## Overview
 - 設計師:水龍頭樣式
@@ -48,7 +49,7 @@ console.log(hello);
   - 以值作為比較
     ```js
     123 === 123 // true
-    '5xruby' === '5xruby' //true
+    '5xruby' === '5xruby' // true
     ```
   - property 是唯讀的不能改
     ```js
@@ -256,3 +257,105 @@ while (i<10) {
 }
 ```
 `break;`可以提早跳出迴圈，`continue;`可以直接跳過之後的步驟，直接到下一個回合。
+
+## Function
+物件的 functiom 通常被稱為 method
+
+### scope
+變數的作用域最小單位是 function
+```js
+var foo = 1;     
+var doSomeThing = function (bar){
+  var foo = 2;
+  return foo + bar;
+};
+ foo = 100;
+alert( doSomeThing(3) ); // 5, 會是 function 裡的 foo
+alert( foo ); // 100，不會是裡面的 foo
+```
+
+假設 function 裡沒有該變數，則會往外找
+```js
+var foo = 1;
+var doSomeThing = function (bar){
+alert( foo );
+var foo = 2;
+  return foo + bar;
+};
+foo = 100;
+alert( doSomeThing(3) ); // 103
+alert( foo ); // 100
+```
+
+沒有function 宣告的變數很危險，以下是變數被污染的例子。
+```js
+var foo = 1;
+var doSomeThing = function (bar){
+  foo = 2;
+  return foo + bar;
+};
+foo = 100;
+alert( doSomeThing(3) ); // 5
+alert( foo ); // 2
+```
+### 變數抬升
+
+```js
+var foo = 1;
+var doSomeThing = function (bar){
+  alert( foo ); // undefined
+  var foo = 2;
+  return foo + bar;
+};
+
+foo = 100;
+alert( doSomeThing(3) ); // 5
+alert( foo ); 
+
+```
+
+```js
+var foo = 1;
+var doSomeThing = function (bar){
+  
+  var foo;       // 變數抬升
+  alert( foo );  // undefined
+  var foo = 2;
+  return foo + bar;
+};
+
+foo = 100;
+alert( doSomeThing(3) ); // 5
+alert( foo ); // 100
+```
+
+### 函數宣告方式
+有兩種，看以下範例
+```js
+foo1(); // success
+foo2(); // error, not a function
+function foo1() {
+  // 這個宣告方式，全域都可以使用
+  console.log( '1' );
+}
+var foo2 = function(){
+  // var 宣告的方式，執行時一定要在宣告之後
+  console.log( '2' );
+}
+```
+如果取了有兩個廣域函數相同名字，會依順序覆蓋
+```js
+foo(); // 3
+
+function foo() {
+  console.log(1);
+}
+
+var foo = function() {
+  console.log(2);
+}
+
+function foo() {
+  console.log(3);
+}
+```

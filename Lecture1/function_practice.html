@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript">
+    
+    var getLottert = function() {
+      var lottery = [];
+      
+      while ( lottery.length < 6 ) {
+        number = Math.floor( Math.random() * 50 );
+        if ( lottery.indexOf( number ) === -1 ) {
+          lottery.push( number );
+        }
+      }
+      return lottery;
+    }
+    
+    console.log( getLottert() );
+    console.log( getLottert() );
+    console.log( getLottert() );
+    
+  </script>
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
